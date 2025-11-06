@@ -40,3 +40,9 @@ mybatis-plus:
       logic-delete-field: deleted
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+
+# 固定设备ID配置
+fixed:
+  machine:
+    id: "ma1"  # 替换为您想要的固定设备ID

@@ -5,20 +5,28 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("users")
 public class Users {
-    @TableId("userId")
-    private String userId;
-    private String openId;
-    private double blance;
-    private String userName;
+    @TableId
+    private String userId;          // 用户唯一标识
+    private String openId;          // 微信用户唯一标识
+    private Double balance;         // 用户余额
+    private String userName;        // 用户名称
+    private String userPassword;    // 用户密码
 
-    public String getUserName() {
-        return userName;
+    // 默认构造函数
+    public Users() {
     }
 
-    public void setUserName(String userName) {
+    // 注册用构造函数
+    public Users(String userId, String userName, String userPassword) {
+        this.userId = userId;
         this.userName = userName;
+        this.userPassword = userPassword;
+        this.balance = 0.0; // 默认余额为0
     }
 
+
+
+    // Getter和Setter方法
     public String getUserId() {
         return userId;
     }
@@ -35,12 +43,28 @@ public class Users {
         this.openId = openId;
     }
 
-    public double getBlance() {
-        return blance;
+    public Double getBalance() {
+        return balance;
     }
 
-    public void setBlance(double blance) {
-        this.blance = blance;
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
     @Override
@@ -48,8 +72,9 @@ public class Users {
         return "Users{" +
                 "userId='" + userId + '\'' +
                 ", openId='" + openId + '\'' +
-                ", balance=" + blance +
+                ", balance=" + balance +
                 ", userName='" + userName + '\'' +
+                ", userPassword='" + (userPassword != null ? "***" : "null") + '\'' +
                 '}';
     }
 

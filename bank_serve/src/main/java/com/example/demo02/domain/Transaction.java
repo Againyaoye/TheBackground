@@ -10,28 +10,31 @@ import java.time.LocalDateTime;
 @TableName("transaction")
 public class Transaction {
 
-    @TableId(value = "transaction_id", type = IdType.ASSIGN_ID)
-    private String transactionId;          // 交易记录id
-    private String userId;
-
-    private String machineId;              // 设备表的id
-    private String orderStatus;            // 订单状态
-    private Double totalLiters;            // 总加水量
-    private Double finalAmount;            // 最终金额
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime startTime;       // 交易开始的时间
+    @TableId(type = IdType.INPUT)
+    private String transactionId;      // 交易记录id
+    private String userId;             // 用户id
+    private String machineId;          // 设备表的id
+    private String orderStatus;        // 订单状态
+    private Double totalLiters;        // 总加水量
+    private Double finalAmount;        // 最终金额
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime endTime;         // 交易结束的时间
+    private LocalDateTime startTime;   // 交易开始的时间
 
-    private String waterAddSwitch;         // stm32的开水开关
-    private String fillUp;                 // 是否加满
-    private String deviceTemperature;      // 设备温度
-    private String batteryLevel;           // 电池电量
-    private String latitudeAndLongitude;   // 经纬度
-    // 用户id
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime endTime;     // 交易结束的时间
 
+    // 默认构造函数
+    public Transaction() {
+        this.transactionId = generateTransactionId();
+    }
+
+    // 生成交易ID的方法
+    private String generateTransactionId() {
+        return "TXN" + System.currentTimeMillis() + "_" + (int)(Math.random() * 1000);
+    }
+
+    // Getter和Setter方法
     public String getTransactionId() {
         return transactionId;
     }
@@ -96,49 +99,6 @@ public class Transaction {
         this.endTime = endTime;
     }
 
-    public String getWaterAddSwitch() {
-        return waterAddSwitch;
-    }
-
-    public void setWaterAddSwitch(String waterAddSwitch) {
-        this.waterAddSwitch = waterAddSwitch;
-    }
-
-    public String getFillUp() {
-        return fillUp;
-    }
-
-    public void setFillUp(String fillUp) {
-        this.fillUp = fillUp;
-    }
-
-    public String getDeviceTemperature() {
-        return deviceTemperature;
-    }
-
-    public void setDeviceTemperature(String deviceTemperature) {
-        this.deviceTemperature = deviceTemperature;
-    }
-
-    public String getBatteryLevel() {
-        return batteryLevel;
-    }
-
-    public void setBatteryLevel(String batteryLevel) {
-        this.batteryLevel = batteryLevel;
-    }
-
-    public String getLatitudeAndLongitude() {
-        return latitudeAndLongitude;
-    }
-
-    public void setLatitudeAndLongitude(String latitudeAndLongitude) {
-        this.latitudeAndLongitude = latitudeAndLongitude;
-    }
-
-
-
-
     @Override
     public String toString() {
         return "Transaction{" +
@@ -150,15 +110,8 @@ public class Transaction {
                 ", finalAmount=" + finalAmount +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
-                ", waterAddSwitch='" + waterAddSwitch + '\'' +
-                ", fillUp='" + fillUp + '\'' +
-                ", deviceTemperature='" + deviceTemperature + '\'' +
-                ", batteryLevel='" + batteryLevel + '\'' +
-                ", latitudeAndLongitude='" + latitudeAndLongitude + '\'' +
                 '}';
     }
-
-
 
 
 }
