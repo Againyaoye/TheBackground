@@ -103,11 +103,6 @@ install extension in vscode: i18n Ally(https://marketplace.visualstudio.com/item
    ```
    
 ## Partner project
-* [Thinker-Admin-Box - springboot with vue-admin-box, use java code to generate vue page](https://github.com/yirius/thinker-admin-box)
-* [H5-dooring - a low code project about the mobile website](http://h5.dooring.cn)
-* [ant-simple-pro - a middle website based on Vue3.0, react and angular](https://github.com/lgf196/ant-simple-pro)
-* [vue-vben-admin - a modern vue admin. It is based on Vue3, vite and TypeScript. It's fast！](https://github.com/vbenjs/vue-vben-admin)
-
 
 ## preview
 
